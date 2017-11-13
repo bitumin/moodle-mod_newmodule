@@ -76,10 +76,11 @@ fi
 cd ..
 mv newmodule ${NEWNAME}
 
-# Delete rename bash script and old README.txt
+# Delete rename.sh bash script, old readme and .git folder
 cd ${NEWNAME}
 rm rename.sh
 rm README.md
+rm -rf .git
 
 # Create new README file
 echo "# Moodle activity module ${NEWNAME}" > README.md
