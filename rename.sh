@@ -79,7 +79,7 @@ mv newmodule ${NEWNAME}
 # Delete rename bash script and old README.txt
 cd ${NEWNAME}
 rm rename.sh
-rm README.txt
+rm README.md
 
 # Create new README file
 echo "# Moodle activity module ${NEWNAME}" > README.md
