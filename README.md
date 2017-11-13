@@ -2,7 +2,7 @@
 
 The following steps should get you up and running with this module template code.
 
-#### Download repository
+#### Download repository
 
 Unzip this repo or clone it within the Moodle directory `mod/newmodule`
 
@@ -47,7 +47,7 @@ Visit `Settings > Site Administration > Notifications`, you should find the modu
 
 Go to `Site Administration > Plugins > Activity modules > Manage activities` and you should find that this newmodule has been added to the list of installed modules.
 
-#### Happy coding!
+#### Happy coding!
 
 You may now proceed to run your own code in an attempt to develop your module. You will probably want to modify mod_form.php and view.php as a first step.
 
