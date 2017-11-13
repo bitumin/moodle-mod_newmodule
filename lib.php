@@ -48,7 +48,7 @@ define('NEWMODULE_ULTIMATE_ANSWER', 42);
  */
 function newmodule_supports($feature) {
 
-    switch($feature) {
+    switch ($feature) {
         case FEATURE_MOD_INTRO:
             return true;
         case FEATURE_SHOW_DESCRIPTION:
@@ -158,7 +158,7 @@ function newmodule_refresh_events($courseid = 0) {
 function newmodule_delete_instance($id) {
     global $DB;
 
-    if (! $newmodule = $DB->get_record('newmodule', array('id' => $id))) {
+    if (!$newmodule = $DB->get_record('newmodule', array('id' => $id))) {
         return false;
     }
 
@@ -237,7 +237,7 @@ function newmodule_print_recent_activity($course, $viewfullnames, $timestart) {
  * @param int $userid check for a particular user's activity only, defaults to 0 (all users)
  * @param int $groupid check for a particular group's activity only, defaults to 0 (all groups)
  */
-function newmodule_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid=0, $groupid=0) {
+function newmodule_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid = 0, $groupid = 0) {
 }
 
 /**
@@ -262,7 +262,7 @@ function newmodule_print_recent_mod_activity($activity, $courseid, $detail, $mod
  *
  * @return boolean
  */
-function newmodule_cron () {
+function newmodule_cron() {
     return true;
 }
 
@@ -327,9 +327,9 @@ function newmodule_scale_used_anywhere($scaleid) {
  * @param bool $reset reset grades in the gradebook
  * @return void
  */
-function newmodule_grade_item_update(stdClass $newmodule, $reset=false) {
+function newmodule_grade_item_update(stdClass $newmodule, $reset = false) {
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     $item = array();
     $item['itemname'] = clean_param($newmodule->name, PARAM_NOTAGS);
@@ -337,11 +337,11 @@ function newmodule_grade_item_update(stdClass $newmodule, $reset=false) {
 
     if ($newmodule->grade > 0) {
         $item['gradetype'] = GRADE_TYPE_VALUE;
-        $item['grademax']  = $newmodule->grade;
-        $item['grademin']  = 0;
+        $item['grademax'] = $newmodule->grade;
+        $item['grademin'] = 0;
     } else if ($newmodule->grade < 0) {
         $item['gradetype'] = GRADE_TYPE_SCALE;
-        $item['scaleid']   = -$newmodule->grade;
+        $item['scaleid'] = -$newmodule->grade;
     } else {
         $item['gradetype'] = GRADE_TYPE_NONE;
     }
@@ -351,7 +351,7 @@ function newmodule_grade_item_update(stdClass $newmodule, $reset=false) {
     }
 
     grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
-            $newmodule->id, 0, null, $item);
+        $newmodule->id, 0, null, $item);
 }
 
 /**
@@ -362,10 +362,10 @@ function newmodule_grade_item_update(stdClass $newmodule, $reset=false) {
  */
 function newmodule_grade_item_delete($newmodule) {
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     return grade_update('mod/newmodule', $newmodule->course, 'mod', 'newmodule',
-            $newmodule->id, 0, null, array('deleted' => 1));
+        $newmodule->id, 0, null, array('deleted' => 1));
 }
 
 /**
@@ -378,7 +378,7 @@ function newmodule_grade_item_delete($newmodule) {
  */
 function newmodule_update_grades(stdClass $newmodule, $userid = 0) {
     global $CFG, $DB;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     // Populate array of grade objects indexed by userid.
     $grades = array();
@@ -438,7 +438,7 @@ function newmodule_get_file_info($browser, $areas, $course, $cm, $context, $file
  * @param bool $forcedownload whether or not force download
  * @param array $options additional options affecting the file serving
  */
-function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload, array $options=array()) {
+function newmodule_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload, array $options = array()) {
     global $DB, $CFG;
 
     if ($context->contextlevel != CONTEXT_MODULE) {
@@ -475,6 +475,6 @@ function newmodule_extend_navigation(navigation_node $navref, stdClass $course, 
  * @param settings_navigation $settingsnav complete settings navigation tree
  * @param navigation_node $newmodulenode newmodule administration node
  */
-function newmodule_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $newmodulenode=null) {
+function newmodule_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $newmodulenode = null) {
     // TODO Delete this function and its docblock, or implement it.
 }

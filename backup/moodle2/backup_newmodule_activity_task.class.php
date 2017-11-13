@@ -62,11 +62,11 @@ class backup_newmodule_activity_task extends backup_activity_task {
         $base = preg_quote($CFG->wwwroot, '/');
 
         // Link to the list of newmodules.
-        $search = '/('.$base.'\/mod\/newmodule\/index.php\?id\=)([0-9]+)/';
+        $search = '/(' . $base . '\/mod\/newmodule\/index.php\?id\=)([0-9]+)/';
         $content = preg_replace($search, '$@NEWMODULEINDEX*$2@$', $content);
 
         // Link to newmodule view by moduleid.
-        $search = '/('.$base.'\/mod\/newmodule\/view.php\?id\=)([0-9]+)/';
+        $search = '/(' . $base . '\/mod\/newmodule\/view.php\?id\=)([0-9]+)/';
         $content = preg_replace($search, '$@NEWMODULEVIEWBYID*$2@$', $content);
 
         return $content;

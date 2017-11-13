@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
  * English strings for newmodule
  *
@@ -36,7 +35,8 @@ $string['newmodule:submit'] = 'Submit newmodule';
 $string['newmodule:view'] = 'View newmodule';
 $string['newmodulefieldset'] = 'Custom example fieldset';
 $string['newmodulename'] = 'newmodule name';
-$string['newmodulename_help'] = 'This is the content of the help tooltip associated with the newmodulename field. Markdown syntax is supported.';
+$string['newmodulename_help'] =
+    'This is the content of the help tooltip associated with the newmodulename field. Markdown syntax is supported.';
 $string['newmodule'] = 'newmodule';
 $string['pluginadministration'] = 'newmodule administration';
 $string['pluginname'] = 'newmodule';

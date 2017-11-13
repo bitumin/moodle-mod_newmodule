@@ -55,7 +55,7 @@ class restore_newmodule_activity_structure_step extends restore_activity_structu
     protected function process_newmodule($data) {
         global $DB;
 
-        $data = (object)$data;
+        $data = (object) $data;
         $oldid = $data->id;
         $data->course = $this->get_courseid();
 
