@@ -58,7 +58,6 @@ $capabilities = array(
         ),
         'clonepermissionsfrom' => 'moodle/course:manageactivities'
     ),
-
     'mod/newmodule:view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,
@@ -67,7 +66,6 @@ $capabilities = array(
             'user' => CAP_ALLOW,
         )
     ),
-
     'mod/newmodule:submit' => array(
         'riskbitmask' => RISK_SPAM,
         'captype' => 'write',

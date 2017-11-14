@@ -8,7 +8,7 @@ _printf () {
 }
 
 # Dependencies validation
-DEPENDENCIES=(rm dirname git mv php)
+DEPENDENCIES=(dirname uname date tr)
 check_dependency () {
    command -v $1 >/dev/null 2>&1 || { echo "(ERROR) This script requires $1. Aborting." >&2; exit 1; }
 }
@@ -23,12 +23,19 @@ for i in "$@"; do
         NEWNAME="${i#*=}"
         shift
         ;;
+        --copyright=*)
+        NEWCOPYRIGHT="${i#*=}"
+        shift
+        ;;
         *)
         ;;
     esac
 done
 if ! [[ ${NEWNAME} =~ ^[a-z]+$ ]]; then
     echo "(ERROR) Name parameter is required and must be a letters only lowercase value. Eg: --name=widget"; exit 1
+fi
+if ! [[ ${NEWCOPYRIGHT} =~ ^[ A-Za-z0-9_\<\>@.]+$ ]]; then
+    echo "(ERROR) Copyright parameter is required and must be a valid alphanumeric string. Eg: --copyright=\"2016 Your Name <your@email.address>\""; exit 1
 fi
 
 # Get operative system
@@ -47,16 +54,18 @@ NEWNAMEUPPERCASE=`echo ${NEWNAME} | tr '[:lower:]' '[:upper:]'`
 
 cd "$(dirname "$0")"
 
-# Rename all files in backup/moodle2/ folder.
+_printf "Renaming backup files..."
 mv backup/moodle2/backup_newmodule_activity_task.class.php backup/moodle2/backup_${NEWNAME}_activity_task.class.php
 mv backup/moodle2/backup_newmodule_stepslib.php backup/moodle2/backup_${NEWNAME}_stepslib.php
 mv backup/moodle2/restore_newmodule_activity_task.class.php backup/moodle2/restore_${NEWNAME}_activity_task.class.php
 mv backup/moodle2/restore_newmodule_stepslib.php backup/moodle2/restore_${NEWNAME}_stepslib.php
+printf "OK\n"
 
-# Rename the file lang/en/newmodule.php to lang/en/widget.php.
+_printf "Renaming lang files..."
 mv lang/en/newmodule.php lang/en/${NEWNAME}.php
+printf "OK\n"
 
-# Update all references to the module name within all the plugin files.
+_printf "Updating references within files..."
 if [ "$OS" = "Linux" ]; then
     find . -type f -exec sed -i 's/newmodule/'"$NEWNAME"'/g' {} \;
     find . -type f -exec sed -i 's/NEWMODULE/'"$NEWNAMEUPPERCASE"'/g' {} \;
@@ -64,27 +73,43 @@ else
     find . -type f -exec sed -i '' 's/newmodule/'"$NEWNAME"'/g' {} \;
     find . -type f -exec sed -i '' 's/NEWMODULE/'"$NEWNAMEUPPERCASE"'/g' {} \;
 fi
+printf "OK\n"
 
-# Modify version.php and set the initial version of you module.
+_printf "Updating copyright info within files..."
+if [ "$OS" = "Linux" ]; then
+    find . -type f -exec sed -i 's/2016 Your Name <your@email.address>/'"$NEWCOPYRIGHT"'/g' {} \;
+else
+    find . -type f -exec sed -i '' 's/2016 Your Name <your@email.address>/'"$NEWCOPYRIGHT"'/g' {} \;
+fi
+printf "OK\n"
+
+_printf "Updating plugin version..."
 if [ "$OS" = "Linux" ]; then
     sed -i 's/2014051200/'"$NEWVERSION"'/g' version.php
 else
     sed -i '' 's/2014051200/'"$NEWVERSION"'/g' version.php
 fi
+printf "OK\n"
 
-# Rename the newmodule/ folder to the name of your module.
+_printf "Renaming plugin folder..."
 cd ..
 mv newmodule ${NEWNAME}
+printf "OK\n"
 
-# Delete rename.sh bash script, old readme and .git folder
+_printf "Removing .git folder..."
 cd ${NEWNAME}
-rm rename.sh
-rm README.md
 rm -rf .git
+printf "OK\n"
 
-# Create new README file
+_printf "Creating new README.md file..."
+rm README.md
 echo "# Moodle activity module ${NEWNAME}" > README.md
+printf "OK\n"
 
-echo 'Done!'
+_printf "Deleting rename.sh script..."
+rm rename.sh
+printf "OK\n"
+
+echo '\nRenaming done without errors. Happy codding!\n'
 
 exit 0
