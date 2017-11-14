@@ -97,9 +97,9 @@ printf "OK\n"
 
 _printf "Updating plugin version..."
 if [ "$OS" = "Linux" ]; then
-    sed -i 's/2014051200/'"$NEWVERSION"'/g' version.php
+    sed -i 's/2017111400/'"$NEWVERSION"'/g' version.php
 else
-    sed -i '' 's/2014051200/'"$NEWVERSION"'/g' version.php
+    sed -i '' 's/2017111400/'"$NEWVERSION"'/g' version.php
 fi
 printf "OK\n"
 
