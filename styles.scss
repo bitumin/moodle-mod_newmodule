@@ -1,1 +1,4 @@
-@import 'styles/partial';
+[data-region=view-page] {
+    // Some styles
+    @import 'styles/partial';
+}
