@@ -34,7 +34,7 @@ done
 if ! [[ ${NEWNAME} =~ ^[a-z]+$ ]]; then
     echo "(ERROR) Name parameter is required and must be a letters only lowercase value. Eg: --name=widget"; exit 1
 fi
-if ! [[ ${NEWCOPYRIGHT} =~ ^[0-9a-zA-Z\>\<@.\ ]+$ ]]; then
+if ! [[ ${NEWCOPYRIGHT} =~ ^[-_0-9a-zA-Z\>\<@.\ ]+$ ]]; then
     echo "(ERROR) Copyright parameter is required and must be a valid alphanumeric string. Eg: --copyright=\"2016 Your Name <your@email.address>\""; exit 1
 fi
 
@@ -53,6 +53,18 @@ NEWVERSION=`date +%Y%m%d00`
 NEWNAMEUPPERCASE=`echo ${NEWNAME} | tr '[:lower:]' '[:upper:]'`
 
 cd "$(dirname "$0")"
+
+_printf "Creating new plugin folder mod/$NEWNAME..."
+cd ..
+cp -R newmodule ${NEWNAME}
+printf "OK\n"
+
+_printf "Cleaning new mod workspace..."
+cd ${NEWNAME}
+rm -rf .git
+rm rename.sh
+rm README.md
+printf "OK\n"
 
 _printf "Renaming backup files..."
 mv backup/moodle2/backup_newmodule_activity_task.class.php backup/moodle2/backup_${NEWNAME}_activity_task.class.php
@@ -91,23 +103,8 @@ else
 fi
 printf "OK\n"
 
-_printf "Renaming plugin folder..."
-cd ..
-mv newmodule ${NEWNAME}
-printf "OK\n"
-
-_printf "Removing .git folder..."
-cd ${NEWNAME}
-rm -rf .git
-printf "OK\n"
-
 _printf "Creating new README.md file..."
-rm README.md
 echo "# Moodle activity module ${NEWNAME}" > README.md
-printf "OK\n"
-
-_printf "Deleting rename.sh script..."
-rm rename.sh
 printf "OK\n"
 
 echo '\nRenaming done without errors. Happy codding!\n'
