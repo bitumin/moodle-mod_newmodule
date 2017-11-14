@@ -51,7 +51,7 @@
         "linkeverything": 0
     }
 }}
-<div data-region='gallery-inplace-editable'>
+<div data-region='newmodule-inplace-editable'>
     {{#component}}
         <span class="collab_editable inplaceeditable inplaceeditable-{{type}}"
               data-inplaceeditable="1"
@@ -63,9 +63,6 @@
               data-type="{{type}}"
               data-options="{{options}}"
         >{{^ linkeverything }}{{{displayvalue}}}{{/ linkeverything }}<a href="#" class="quickeditlink" data-inplaceeditablelink="1" title="{{edithint}}">{{# linkeverything }}{{{displayvalue}}}{{/ linkeverything }}<span class="quickediticon visibleifjs">{{#pix}}t/editstring,core,{{edithint}}{{/pix}}</span></a></span>
-        {{#js}}
-            require(['mod_gallery/inplace_editable']);
-        {{/js}}
     {{/component}}
     {{^component}}
         {{{displayvalue}}}
