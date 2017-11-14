@@ -34,7 +34,7 @@ done
 if ! [[ ${NEWNAME} =~ ^[a-z]+$ ]]; then
     echo "(ERROR) Name parameter is required and must be a letters only lowercase value. Eg: --name=widget"; exit 1
 fi
-if ! [[ ${NEWCOPYRIGHT} =~ ^[ A-Za-z0-9_\<\>@.]+$ ]]; then
+if ! [[ ${NEWCOPYRIGHT} =~ ^[0-9a-zA-Z\>\<@.\ ]+$ ]]; then
     echo "(ERROR) Copyright parameter is required and must be a valid alphanumeric string. Eg: --copyright=\"2016 Your Name <your@email.address>\""; exit 1
 fi
 
