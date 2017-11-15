@@ -22,7 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace mod_gallery\output;
+namespace mod_newmodule\output;
 
 defined('MOODLE_INTERNAL') || die;
 
