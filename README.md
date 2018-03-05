@@ -16,6 +16,8 @@ From the command line run the bash script `rename.sh`. For example, if the name 
 sh rename.sh --name=tictactoe --copyright="2018 Mitxel Moriana <mitxel+moriana@my-email.com>"
 ```
 
+If the script is successful it will create a new module folder with the provided module name and all the renaming operations done. Then you may delete this repository folder.  
+
 If this script fails or if you prefer to do the renaming operations manually, follow this steps: 
 
 * Rename the newmodule/ folder to the name of your module (eg "tictactoe").
