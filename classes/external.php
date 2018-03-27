@@ -18,7 +18,7 @@
  * This is the external API for this plugin.
  *
  * @package    mod_gallery
- * @copyright  2017 SM - CV&A Consulting <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,7 +41,7 @@ require_once(__DIR__ . '/../locallib.php');
 /**
  * This is the external API for this plugin.
  *
- * @copyright  2017 SM - CV&A Consulting <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class external extends core_external_api {

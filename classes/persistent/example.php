@@ -18,7 +18,7 @@
  * Class for gallery persistence.
  *
  * @package    mod_gallery
- * @copyright  2017 SM - CV&A Constuling <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -38,7 +38,7 @@ use stdClass;
 /**
  * Class for loading/storing galleries from the DB.
  *
- * @copyright  2017 SM - CV&A Constuling <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class exmaple extends persistent {

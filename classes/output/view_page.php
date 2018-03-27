@@ -18,7 +18,7 @@
  * Class containing data for gallery assignment view page
  *
  * @package    mod_gallery
- * @copyright  2017 SM - CV&A Consulting <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,7 +39,7 @@ use renderer_base;
 /**
  * Class containing data for index page
  *
- * @copyright  2017 SM - CV&A Consulting <mmoriana@cvaconsulting.com>
+ * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class view_page implements renderable, templatable {
