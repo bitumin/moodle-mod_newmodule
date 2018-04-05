@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Class containing data for gallery assignment view page
+ * Class containing data for newmodule assignment view page
  *
- * @package    mod_gallery
+ * @package    mod_newmodule
  * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,7 +30,7 @@ require_once($CFG->dirroot . '/webservice/externallib.php');
 require_once(__DIR__ . '/../../locallib.php');
 
 use context;
-use mod_gallery\external\example_exporter;
+use mod_newmodule\external\example_exporter;
 use renderable;
 use stdClass;
 use templatable;
@@ -46,7 +46,7 @@ class view_page implements renderable, templatable {
     private $context;
 
     /**
-     * gallery_assignment_page constructor.
+     * newmodule_assignment_page constructor.
      *
      * @param context $context
      */

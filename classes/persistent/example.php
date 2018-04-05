@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Class for gallery persistence.
+ * Class for newmodule persistence.
  *
- * @package    mod_gallery
+ * @package    mod_newmodule
  * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -64,7 +64,7 @@ class exmaple extends persistent {
                 'type' => PARAM_RAW,
                 'optional' => true,
                 'null' => NULL_ALLOWED,
-                'description' => 'Gallery module instance introduction text',
+                'description' => 'newmodule module instance introduction text',
                 'default' => null,
             ),
             'introformat' => array(
@@ -156,14 +156,14 @@ class exmaple extends persistent {
 
         // Try using fast modinfo first (uses cache).
         $modinfo = get_fast_modinfo($courseid);
-        if (null !== $modinfo && isset($modinfo->instances['gallery'][$instanceid])) {
+        if (null !== $modinfo && isset($modinfo->instances['newmodule'][$instanceid])) {
             /** @var cm_info $cminfo */
-            $cminfo = $modinfo->instances['gallery'][$instanceid];
+            $cminfo = $modinfo->instances['newmodule'][$instanceid];
             return $cminfo->get_course_module_record();
         }
 
         // Default to helper (uses db query).
-        if ($cm = get_coursemodule_from_instance('gallery', $instanceid, $courseid)) {
+        if ($cm = get_coursemodule_from_instance('newmodule', $instanceid, $courseid)) {
             return $cm;
         }
 
@@ -191,6 +191,6 @@ class exmaple extends persistent {
             $userid = $USER->id;
         }
 
-        return has_capability('mod/gallery:edit', $context, $userid);
+        return has_capability('mod/newmodule:edit', $context, $userid);
     }
 }

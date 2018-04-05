@@ -27,7 +27,7 @@ require_once($CFG->libdir . '/formslib.php');
 require_once($CFG->dirroot . '/repository/lib.php');
 
 /**
- * Class collaborativetype_gallery2_dropzone_form
+ * Class mod_newmodule\form\filepicker
  */
 class filepicker extends moodleform {
     /**

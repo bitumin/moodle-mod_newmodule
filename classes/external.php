@@ -17,7 +17,7 @@
 /**
  * This is the external API for this plugin.
  *
- * @package    mod_gallery
+ * @package    mod_newmodule
  * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,8 +31,8 @@ use external_function_parameters;
 use external_single_structure;
 use external_value;
 use invalid_parameter_exception;
-use mod_gallery\external\gallery_submission_exporter;
-use mod_gallery\persistent\gallery_assignment;
+use mod_newmodule\external\newmodule_submission_exporter;
+use mod_newmodule\persistent\newmodule_assignment;
 
 require_once($CFG->libdir . '/externallib.php');
 require_once($CFG->dirroot . '/webservice/externallib.php');
@@ -70,9 +70,9 @@ class external extends core_external_api {
         }
 
         // Context validation.
-        $assignment = new gallery_assignment($assignmentid);
-        $gallery = $assignment->get_gallery();
-        $context = $gallery->get_context();
+        $assignment = new newmodule_assignment($assignmentid);
+        $newmodule = $assignment->get_newmodule();
+        $context = $newmodule->get_context();
         self::validate_context($context);
 
         // Update assignment expected completion timestamp.
@@ -111,24 +111,24 @@ class external extends core_external_api {
         }
 
         // Context validation.
-        $assignment = new gallery_assignment($assignmentid);
-        $gallery = $assignment->get_gallery();
-        $context = $gallery->get_context();
+        $assignment = new newmodule_assignment($assignmentid);
+        $newmodule = $assignment->get_newmodule();
+        $context = $newmodule->get_context();
         self::validate_context($context);
 
         // Submit assignment.
-        $course = $gallery->get_course_record();
-        $cm = $gallery->get_cm();
+        $course = $newmodule->get_course_record();
+        $cm = $newmodule->get_cm();
         $submissiontimestamp = api::submit_assignment($context, $course, $cm, $assignment);
 
         // Prepare response.
         $output = $PAGE->get_renderer('core');
-        $exporter = new gallery_submission_exporter(null, ['context' => $context, 'submissiontimestamp' => $submissiontimestamp]);
+        $exporter = new newmodule_submission_exporter(null, ['context' => $context, 'submissiontimestamp' => $submissiontimestamp]);
 
         return $exporter->export($output);
     }
 
     public static function submit_assignment_returns() {
-        return gallery_submission_exporter::get_read_structure();
+        return newmodule_submission_exporter::get_read_structure();
     }
 }

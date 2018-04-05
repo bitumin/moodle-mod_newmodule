@@ -31,7 +31,7 @@ use plugin_renderer_base;
 /**
  * Renderer class.
  *
- * @package    mod_gallery
+ * @package    mod_newmodule
  * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,7 +39,7 @@ class renderer extends plugin_renderer_base {
     /**
      * Defer to template.
      *
-     * @param gallery_assignment_page $page
+     * @param newmodule_assignment_page $page
      * @return string html for the page
      */
     public function render_view_page($page) {

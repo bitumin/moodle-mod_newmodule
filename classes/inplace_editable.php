@@ -23,15 +23,15 @@ use lang_string;
 use renderer_base;
 
 /**
- * Class mod_gallery_inplace_editable
+ * Class mod_newmodule_inplace_editable
  */
 class inplace_editable extends core_inplace_editable {
     public function __construct($itemtype, $itemid, $value, $editable) {
         $displayvalue = format_string($value);
-        $hint = new lang_string('inplace_hint', 'mod_gallery');
-        $editlabel = new lang_string('editlabel', 'mod_gallery') . ' ' . format_string($value);
+        $hint = new lang_string('inplace_hint', 'mod_newmodule');
+        $editlabel = new lang_string('editlabel', 'mod_newmodule') . ' ' . format_string($value);
 
-        parent::__construct('mod_gallery', $itemtype, $itemid, $editable, $displayvalue, $value, $hint, $editlabel);
+        parent::__construct('mod_newmodule', $itemtype, $itemid, $editable, $displayvalue, $value, $hint, $editlabel);
     }
 
     /**

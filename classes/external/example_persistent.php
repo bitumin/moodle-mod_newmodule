@@ -30,7 +30,7 @@ defined('MOODLE_INTERNAL') || die();
 use core\external\persistent_exporter;
 
 /**
- * Class for exporting gallery assignment data.
+ * Class for exporting newmodule assignment data.
  *
  * @copyright  2016 Your Name <your@email.address>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
